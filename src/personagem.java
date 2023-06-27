@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class personagem {
     String nome;
     int hp = 100;

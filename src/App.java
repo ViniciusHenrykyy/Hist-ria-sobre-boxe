@@ -26,7 +26,7 @@ public class App {
         System.out.println("");
         String a = escaneador.nextLine();
         if (a.equalsIgnoreCase("Desistir")){
-            System.out.println(player.nome + "desistiu da ideia e passou a ter outros objetivos na vida e desistiu do "+
+            System.out.println(player.nome + " desistiu da ideia e passou a ter outros objetivos na vida e desistiu do "+
             " seu sonho");
             System.exit(0);
 
