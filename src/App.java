@@ -13,32 +13,29 @@ public class App {
         personagem player = new personagem();
         personagem rival = new personagem();
         player.nome = escaneador.nextLine();
-
-        System.out.println("Bem vindo " + player.nome + " acho que podemos começar com as posturas de luta");
-        System.out.println("'Bem você esta levando jeito pra coisa' disse o mestre!");
-        System.out.println("Bom, vamos agora fazer alguns exercícios de cardio para ajudar você a ter mais resistência");
-        player.gastarenergia(50);
-        System.out.println("Chegando em casa morto de cansado " + player.nome + " não sente se irá aguentar os exercicios");
-        System.out.println(" e pensa em desistir!");
-        System.out.println("");
-        System.out.println("Desistir");
-        System.out.println("Continuar");
-        System.out.println("");
-        String a = escaneador.nextLine();
-        if (a.equalsIgnoreCase("Desistir")){
-            System.out.println(player.nome + " desistiu da ideia e passou a ter outros objetivos na vida e desistiu do "+
-            " seu sonho");
-            System.exit(0);
-
-        }else{
-            player.perguntaramimir(escaneador);
-        }
-
-        System.out.println("No outro dia me levanto e depois das aulas vou até a academia de box, chagando lá eu conheço ele");
-        System.out.println("Eu pergunto seu nome, mass ele tem um ar de arrogancia e superioridade e me ignora!");
         System.out.println("Qual o nome do seu rival?");
         rival.nome = escaneador.nextLine();
 
+        Capitulo capitulo_1 = new Capitulo();
+        capitulo_1.narrativa = "Bem vindo " + player.nome + " acho que podemos começar com as posturas "+
+        " de luta\n'Bem  você este  levando jeito pra coisa' disse  o  mestre!\nBom, vamos agora fazer "+
+        "alguns exercicios de cardio para ajudar voce a ter mais resistencia\nChegando em casa morto de"+
+        " cansado " + player.nome + " nao sente se ira aguentar os exercicios\n e pensa em desistir!";
+
+        capitulo_1.escolha_1 = "Desistir";
+        capitulo_1.escolha_2 = "Continuar";
+        capitulo_1.alteracaoDeEnergia = 50;
+        capitulo_1.mostrar(player);
+        if(capitulo_1.escolha(escaneador) == 1){
+            System.out.println(player.nome + " desistiu da ideia e passou a ter outros objetivos na vida e desistiu do "+
+            " seu sonho");
+            System.exit(0);
+        }else{
+             player.perguntaramimir(escaneador);
+        }
+        
+        System.out.println("No outro dia me levanto e depois das aulas vou até a academia de box, chagando lá eu conheço ele");
+        System.out.println("Eu pergunto seu nome, mass ele tem um ar de arrogancia e superioridade e me ignora!");
         System.out.println("O mestre disse que ele se chama " + rival.nome + " e que ele é uma grande promessa no país");
         System.out.println(rival.nome +"  olhou para mim e depois perguntou para o mestre se a academia "+
             "estava aceitando perdedores.");
@@ -48,9 +45,9 @@ public class App {
             " para ter um sparring");
         System.out.println("O mestre me disse que iria me treinar e que em 1 mês ele me deixaria lutar com ele!");
 
-        System.out.println("");
-        System.out.println("CAPÍTULO II");
-        System.out.println("");
+        System.out.println("---------------------------------");
+        System.out.println("---------- CAPÍTULO II ----------");
+        System.out.println("---------------------------------");
 
         System.out.println("Chegou o grande dia, e desde o segundo dia nunca fiu com a cara do "+ rival.nome);
         System.out.println("Eu treinei muito!!!");
@@ -60,7 +57,45 @@ public class App {
         System.out.println("Chegando na academia eu vi ele já no ringue com suas luvas e proteção só me esperando");
         System.out.println("O mestre disse que ia ser o juiz e que iria mediar tudo");
         System.out.println("E assim nossa rivalidade começou, nossa luta começou!!!");
-        player.primeiraluta(escaneador, rival);
+
+        Capitulo capitulo_2 = new Capitulo();
+        capitulo_2.narrativa = rival.nome +" tenta acertar um gancho!!!";
+        capitulo_2.escolha_1 = "andar para tras";
+        capitulo_2.escolha_2 = "desviar para o lado";
+        capitulo_2.mostrar(player);
+        if(capitulo_2.escolha(escaneador) == 2){
+            System.out.println("Tomei um soco na altura do estomago e vomitei, "+
+            "e com vergonha fugi da situação e resolvi desistir de tudo");
+            capitulo_2.alteracaoDeHp = 100;
+            System.exit(0);
+        }else{
+            System.out.println("pensei rápido numa aula que o mestre me deu sobre ganchos e andei para trás desviando");
+            capitulo_2.alteracaoDeEnergia = 20;
+        }        
+        Capitulo capitulo_3 = new Capitulo();
+        capitulo_3.narrativa = rival.nome +" vai tentar me acertar um direto!!!";
+        capitulo_3.escolha_1 = "andar para frente e revidar";
+        capitulo_3.escolha_2 = "andar para o lado e revidar";
+        capitulo_3.mostrar(player);
+            if (capitulo_3.escolha(escaneador) == 2){
+                System.out.println("Eu percebo que ele vai dar um direto eu jogo o meu corpo para o lado e tento"+
+                " acerta-lo durante seu golpe, mas ele gira o quadril abaixa a cabeça e me acerta um direto bem"+
+                " no meio do meu nariz, que fica sangrando e eu sinto muita dor, saio do ringue e o mestre  diz "+
+                "que 'um aluno que não lembra do que o mestre dele o ensinou não deviar mais lutar, pois não tem "+
+                "foco e concentração' depois disso peguei minhas coisas e desisti de tudo!!!");
+                capitulo_3.alteracaoDeHp = 100;
+                System.exit(0);
+            }else{
+                System.out.println("Eu lembro do que o mestre me ensinou sobre:'contra golpes e diretos', eu encurto"+
+                " a distância e jogo um gancho no queixo dele, ele me olha irritado e frustado por eu ter acertado"+ 
+                " ele, então ele me diz:'chega de pegar leve', quando ele vinha para cima de mim com sague nos olhos"+
+                " o mestre encerra a luta e diz que era vergonhoso uma atleta como ele que é considerado a promessa "+
+                "do país tomar um soco de uma iniciante que está treinando a 1 mês, e que ele não anda treinando seus"+
+                " fundamentos. Ele fica muito irritado e saí da academia sem falar mais nada só com um olhar frustado"+
+                " e de raiva!!!");
+                capitulo_3.alteracaoDeEnergia = 30;
+                }
+
         if (player.apto()){
             System.out.println("O mestre me considerou vencedor por acertar apenas um golpe, foi meio frustante.");
             System.out.println("Mais só de eu ter tirado aquele ar de superioridade dele já me motivou ainda mais.");

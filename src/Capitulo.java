@@ -4,10 +4,20 @@ public class Capitulo {
     String narrativa;
     String escolha_1;
     String escolha_2;
-    int alteracaoDeEnergia;
+    int alteracaoDeEnergia = 0;
+    int alteracaoDeHp = 0;
     public void mostrar(personagem personagemPrincipal){
         System.out.println(narrativa);
-        personagemPrincipal.gastarenergia(alteracaoDeEnergia);
+        System.out.println("");
+        System.out.println(escolha_1);
+        System.out.println(escolha_2);
+        System.out.println("");
+        if(alteracaoDeEnergia > 0){
+            personagemPrincipal.gastarenergia(alteracaoDeEnergia);
+        }
+        if(alteracaoDeHp > 0){
+            personagemPrincipal.recceberdano(alteracaoDeHp);
+        }
     }
     public int escolha(Scanner escaneador){
         String armazenar = escaneador.nextLine();
