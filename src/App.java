@@ -52,7 +52,7 @@ public class App {
         System.out.println("CAPÍTULO II");
         System.out.println("");
 
-        System.out.println("Chegou o grande dia, e desde o segundo dia nuca fiu com a cara do "+ rival.nome);
+        System.out.println("Chegou o grande dia, e desde o segundo dia nunca fiu com a cara do "+ rival.nome);
         System.out.println("Eu treinei muito!!!");
         System.out.println("Eu sei que ele treina a mais tempo que ele é uma grande promessa,"+
             " mass eu não ligo para nada disso");
