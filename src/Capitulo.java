@@ -2,15 +2,19 @@ import java.util.Scanner;
 
 public class Capitulo {
     String narrativa;
-    String escolha_1;
-    String escolha_2;
+    String[] escolhas;
     int alteracaoDeEnergia = 0;
     int alteracaoDeHp = 0;
+
+    public Capitulo(int totaldeescolhas){
+        escolhas = new String[totaldeescolhas];
+    }
     public void mostrar(personagem personagemPrincipal){
         System.out.println(narrativa);
         System.out.println("");
-        System.out.println(escolha_1);
-        System.out.println(escolha_2);
+        for(String i : escolhas){
+            System.out.println(i);
+        }
         System.out.println("");
         if(alteracaoDeEnergia > 0){
             personagemPrincipal.gastarenergia(alteracaoDeEnergia);
@@ -19,21 +23,27 @@ public class Capitulo {
             personagemPrincipal.recceberdano(alteracaoDeHp);
         }
     }
+    public int getindex(String valorString){
+        int retorno = -1;
+        for(String i : escolhas){
+            retorno += 1;
+            if(i.equalsIgnoreCase(valorString)){
+                return retorno;
+            }
+        }
+        return -1;
+    }
     public int escolha(Scanner escaneador){
         String armazenar = escaneador.nextLine();
         while(true){
-            if((escolha_1.equalsIgnoreCase(armazenar)) || (escolha_2.equalsIgnoreCase(armazenar))){
+            if(getindex(armazenar)>=0){
                 break;
             }else{
                 System.out.println("escolha invalida digite novamente!!");
                 armazenar = escaneador.nextLine();
             }            
         }
-        if(escolha_1.equalsIgnoreCase(armazenar)){
-            return 1;
-        }else{
-            return 2;
-        }
+        return getindex(armazenar);
     }
         
 }

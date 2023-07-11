@@ -16,17 +16,17 @@ public class App {
         System.out.println("Qual o nome do seu rival?");
         rival.nome = escaneador.nextLine();
 
-        Capitulo capitulo_1 = new Capitulo();
+        Capitulo capitulo_1 = new Capitulo(2);
         capitulo_1.narrativa = "Bem vindo " + player.nome + " acho que podemos começar com as posturas "+
         " de luta\n'Bem  você este  levando jeito pra coisa' disse  o  mestre!\nBom, vamos agora fazer "+
         "alguns exercicios de cardio para ajudar voce a ter mais resistencia\nChegando em casa morto de"+
         " cansado " + player.nome + " nao sente se ira aguentar os exercicios\n e pensa em desistir!";
 
-        capitulo_1.escolha_1 = "Desistir";
-        capitulo_1.escolha_2 = "Continuar";
+        capitulo_1.escolhas[0] = "Desistir";
+        capitulo_1.escolhas[1] = "Continuar";
         capitulo_1.alteracaoDeEnergia = 50;
         capitulo_1.mostrar(player);
-        if(capitulo_1.escolha(escaneador) == 1){
+        if(capitulo_1.escolha(escaneador) == 0){
             System.out.println(player.nome + " desistiu da ideia e passou a ter outros objetivos na vida e desistiu do "+
             " seu sonho");
             System.exit(0);
@@ -58,12 +58,12 @@ public class App {
         System.out.println("O mestre disse que ia ser o juiz e que iria mediar tudo");
         System.out.println("E assim nossa rivalidade começou, nossa luta começou!!!");
 
-        Capitulo capitulo_2 = new Capitulo();
+        Capitulo capitulo_2 = new Capitulo(2);
         capitulo_2.narrativa = rival.nome +" tenta acertar um gancho!!!";
-        capitulo_2.escolha_1 = "andar para tras";
-        capitulo_2.escolha_2 = "desviar para o lado";
+        capitulo_2.escolhas[0] = "andar para tras";
+        capitulo_2.escolhas[1]= "desviar para o lado";
         capitulo_2.mostrar(player);
-        if(capitulo_2.escolha(escaneador) == 2){
+        if(capitulo_2.escolha(escaneador) == 1){
             System.out.println("Tomei um soco na altura do estomago e vomitei, "+
             "e com vergonha fugi da situação e resolvi desistir de tudo");
             capitulo_2.alteracaoDeHp = 100;
@@ -72,12 +72,12 @@ public class App {
             System.out.println("pensei rápido numa aula que o mestre me deu sobre ganchos e andei para trás desviando");
             capitulo_2.alteracaoDeEnergia = 20;
         }        
-        Capitulo capitulo_3 = new Capitulo();
+        Capitulo capitulo_3 = new Capitulo(2);
         capitulo_3.narrativa = rival.nome +" vai tentar me acertar um direto!!!";
-        capitulo_3.escolha_1 = "andar para frente e revidar";
-        capitulo_3.escolha_2 = "andar para o lado e revidar";
+        capitulo_3.escolhas[0] = "andar para frente e revidar";
+        capitulo_3.escolhas[1] = "andar para o lado e revidar";
         capitulo_3.mostrar(player);
-            if (capitulo_3.escolha(escaneador) == 2){
+            if (capitulo_3.escolha(escaneador) == 1){
                 System.out.println("Eu percebo que ele vai dar um direto eu jogo o meu corpo para o lado e tento"+
                 " acerta-lo durante seu golpe, mas ele gira o quadril abaixa a cabeça e me acerta um direto bem"+
                 " no meio do meu nariz, que fica sangrando e eu sinto muita dor, saio do ringue e o mestre  diz "+

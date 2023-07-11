@@ -30,6 +30,10 @@ public class personagem {
         System.out.println("não");
         System.out.println("");
         String b = escaneador.nextLine();
+        while(!b.equalsIgnoreCase("sim") && !b.equalsIgnoreCase("não")){
+            System.out.println("Digite novamente!!!");
+            b = escaneador.nextLine();
+        }
         if (b.equalsIgnoreCase("sim")){
             this.amimir();
             System.out.println("Você dormiu bem essa noite");
