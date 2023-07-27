@@ -1,19 +1,24 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Capitulo {
     String narrativa;
-    String[] escolhas;
+    ArrayList<Escolha> escolhas;
     int alteracaoDeEnergia = 0;
     int alteracaoDeHp = 0;
+    personagem personagemPrincipal;
+    Scanner escaneador;
 
-    public Capitulo(int totaldeescolhas){
-        escolhas = new String[totaldeescolhas];
+    public Capitulo(personagem personagemPrincipal, Scanner escaneador) {
+        this.personagemPrincipal = personagemPrincipal;
+        this.escaneador = escaneador;
+        this.escolhas = new ArrayList<Escolha>();
     }
-    public void mostrar(personagem personagemPrincipal){
+    private void mostrar(){
         System.out.println(narrativa);
         System.out.println("");
-        for(String i : escolhas){
-            System.out.println(i);
+        for(Escolha i : escolhas){
+            System.out.println(i.texto);
         }
         System.out.println("");
         if(alteracaoDeEnergia > 0){
@@ -23,17 +28,17 @@ public class Capitulo {
             personagemPrincipal.recceberdano(alteracaoDeHp);
         }
     }
-    public int getindex(String valorString){
+    private int getindex(String valorString){
         int retorno = -1;
-        for(String i : escolhas){
+        for(Escolha i : escolhas){
             retorno += 1;
-            if(i.equalsIgnoreCase(valorString)){
+            if(i.texto.equalsIgnoreCase(valorString)){
                 return retorno;
             }
         }
         return -1;
     }
-    public int escolha(Scanner escaneador){
+    private int escolha(){
         String armazenar = escaneador.nextLine();
         while(true){
             if(getindex(armazenar)>=0){
@@ -45,5 +50,13 @@ public class Capitulo {
         }
         return getindex(armazenar);
     }
+    public void executar() {
+        mostrar();
+        if(this.escolhas.size() > 0){
+            int escolhido = escolha();
+            this.escolhas.get(escolhido).executar();
+        }
         
+    }
+    
 }
