@@ -2,16 +2,20 @@ import java.util.Scanner;
 
 
 public class personagem {
-    String nome;
-    int hp = 100;
-    int energia = 100;
-    int forca = 5;
-    int defesa = 5;
+    private String nome;
+    private int hp = 100;
+    private int energia = 100;
     
     public boolean apto(){
         return this.energia > 0;
     }
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     public void gastarenergia(int valor){
         this.energia -= valor; 
         if (this.energia <= 0){
