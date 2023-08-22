@@ -1,3 +1,6 @@
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -15,76 +18,30 @@ public class App {
         player.setNome(escaneador.nextLine());
         System.out.println("Qual o nome do seu rival?");
         rival.setNome(escaneador.nextLine());
-
-        Capitulo capitulo_1 = new Capitulo(player,escaneador);
-        capitulo_1.setNarrativa( "Bem vindo " + player.getNome() + " acho que podemos começar com as posturas "+
-        " de luta\n'Bem  você este  levando jeito pra coisa' disse  o  mestre!\nBom, vamos agora fazer "+
-        "alguns exercicios de cardio para ajudar voce a ter mais resistencia\nChegando em casa morto de"+
-        " cansado " + player.getNome() + " nao sente se ira aguentar os exercicios\n e pensa em desistir!");
-
-        capitulo_1.setAlteracaoDeEnergia(50);
-        Capitulo capitulo_1_1 = new Capitulo(player, escaneador);
-        Capitulo capitulo_1_2 = new Capitulo(player, escaneador);
-        capitulo_1.adicionarescolha(new Escolha("Desistir", capitulo_1_1));
-        capitulo_1.adicionarescolha(new Escolha("Continuar", capitulo_1_2));
-        capitulo_1_1.setNarrativa(player.getNome() + " desistiu da ideia e passou a ter outros objetivos na vida e desistiu do \n"+
-        " seu sonho");
-        capitulo_1_2.setNarrativa("No outro dia me levanto e depois das aulas vou até a academia de box, chagando lá eu conheço ele\n" +
-        "Eu pergunto seu nome, mass ele tem um ar de arrogancia e superioridade e me ignora!\n"+
-        "O mestre disse que ele se chama " + rival.getNome() + " e que ele é uma grande promessa no país\n"+
-         rival.getNome() + " olhou para mim e depois perguntou para o mestre se a academia "+   "estava aceitando perdedores.\n"+
-        "Eu não consegui me conter de raiva e pedi para lutar com ele"+
-        "Ele aceitou, e disse que ia me mostrar que eu não servia para estar ali\n"+
-        "O mestre advertiu ele e a mim, pois ele disse que eu não sabia nem o básico"+ " para ter um sparring\n"+
-        "O mestre me disse que iria me treinar e que em 1 mês ele me deixaria lutar com ele!\n"+                
-        "Chegou o grande dia, e desde o segundo dia nunca fiu com a cara do "+ rival.getNome() +"\n"+
-        "Eu treinei muito!!!\n"+
-        "Eu sei que ele treina a mais tempo que ele é uma grande promessa,\n"+
-            " mass eu não ligo para nada disso\n"+
-        "Eu só sinto que preciso acabar com a arrogancia desse cara!!!\n"+
-        "Chegando na academia eu vi ele já no ringue com suas luvas e proteção só me esperando\n"+
-        "O mestre disse que ia ser o juiz e que iria mediar tudo\n"+
-        "E assim nossa rivalidade começou, nossa luta começou!!!\n");
-
-        Capitulo capitulo_2 = new Capitulo(player,escaneador);
-        capitulo_1_2.adicionarescolha(new Escolha("proximo", capitulo_2));
-        capitulo_2.setNarrativa( rival.getNome() +" tenta acertar um gancho!!!");
-        Capitulo capitulo_2_1 = new Capitulo(player, escaneador);
-        Capitulo capitulo_2_2 = new Capitulo(player, escaneador);
-        capitulo_2.adicionarescolha(new Escolha("andar para tras", capitulo_2_1));
-        capitulo_2.adicionarescolha(new Escolha("desviar para o lado", capitulo_2_2)); 
-        capitulo_2_1.setNarrativa("Tomei um soco na altura do estomago e vomitei,\n e com vergonha fugi da situação e resolvi desistir de tudo");
-        capitulo_2_1.setAlteracaoDeEnergia(100);
-        capitulo_2_2.setNarrativa("pensei rápido numa aula que o mestre me deu sobre ganchos e andei para trás desviando");
-        capitulo_2_1.setAlteracaoDeEnergia(20);
-
-        Capitulo capitulo_3 = new Capitulo(player,escaneador);
-        capitulo_2_2.adicionarescolha(new Escolha("proximo",capitulo_3));
-        capitulo_3.setNarrativa(rival.getNome() +" vai tentar me acertar um direto!!!");
-        Capitulo capitulo_3_1 = new Capitulo(player, escaneador);
-        Capitulo capitulo_3_2 = new Capitulo(player, escaneador);
-        capitulo_3.adicionarescolha(new Escolha("andar para frente e revidar", capitulo_3_1));
-        capitulo_3.adicionarescolha(new Escolha("andar para o lado e revidar", capitulo_3_2));
-
-        capitulo_3_1.setNarrativa("Eu percebo que ele vai dar um direto eu jogo o meu corpo para o lado e tento\n"+
-                " acerta-lo durante seu golpe, mas ele gira o quadril abaixa a cabeça e me acerta um direto bem\n"+
-                " no meio do meu nariz, que fica sangrando e eu sinto muita dor, saio do ringue e o mestre  diz \n"+
-                "que 'um aluno que não lembra do que o mestre dele o ensinou não deviar mais lutar, pois não tem \n"+
-                "foco e concentração' depois disso peguei minhas coisas e desisti de tudo!!!\n");
-
-        capitulo_3_1.setAlteracaoDeHp(100);
-
-
-        capitulo_3_2.setNarrativa("Eu lembro do que o mestre me ensinou sobre:'contra golpes e diretos', eu encurto\n"+
-                " a distância e jogo um gancho no queixo dele, ele me olha irritado e frustado por eu ter acertado\n"+ 
-                " ele, então ele me diz:'chega de pegar leve', quando ele vinha para cima de mim com sague nos olhos\n"+
-                " o mestre encerra a luta e diz que era vergonhoso uma atleta como ele que é considerado a promessa \n"+
-                "do país tomar um soco de uma iniciante que está treinando a 1 mês, e que ele não anda treinando seus\n"+
-                " fundamentos. Ele fica muito irritado e saí da academia sem falar mais nada só com um olhar frustado\n"+
-                " e de raiva!!!");
-
-        capitulo_3_1.setAlteracaoDeHp(30);
-        capitulo_1.executar();
+        Map < String,Capitulo > listaCapitulo = new HashMap < String,Capitulo > ();
+        File save = new File("Rsc/data.txt");
+        Scanner savScanner = new Scanner(save,"UTF-8");
+        while(savScanner.hasNextLine()){
+            String linha = savScanner.nextLine();
+            if (linha.equalsIgnoreCase("Capitulo")){
+                String nome = savScanner.nextLine();
+                int setAlteracaoDeEnergia = Integer.parseInt(savScanner.nextLine());
+                int setAlteracaoDeHp = Integer.parseInt(savScanner.nextLine());
+                String rivalString = savScanner.nextLine();
+                String narrativaString = savScanner.nextLine();
+                Capitulo tempCapitulo = new Capitulo(player, escaneador,rival);
+                tempCapitulo.setNarrativa(narrativaString);
+                tempCapitulo.setAlteracaoDeEnergia(setAlteracaoDeEnergia);
+                tempCapitulo.setAlteracaoDeHp(setAlteracaoDeHp);
+                listaCapitulo.put(nome,tempCapitulo);
+            }else if(linha.equalsIgnoreCase("Escolha")){
+                String origem = savScanner.nextLine();
+                String escolha = savScanner.nextLine();
+                String destino = savScanner.nextLine();
+                listaCapitulo.get(origem).adicionarescolha(new Escolha(escolha, listaCapitulo.get(destino)));
+            }
+        }
+        listaCapitulo.get("1").executar();
         if (player.apto()){
             System.out.println("O mestre me considerou vencedor por acertar apenas um golpe, foi meio frustante.");
             System.out.println("Mais só de eu ter tirado aquele ar de superioridade dele já me motivou ainda mais.");

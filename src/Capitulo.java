@@ -7,12 +7,14 @@ public class Capitulo {
     private int alteracaoDeEnergia = 0;
     private int alteracaoDeHp = 0;
     private personagem personagemPrincipal;
+    private personagem rival;
     private Scanner escaneador;
 
-    public Capitulo(personagem personagemPrincipal, Scanner escaneador) {
+    public Capitulo(personagem personagemPrincipal, Scanner escaneador, personagem ri) {
         this.personagemPrincipal = personagemPrincipal;
         this.escaneador = escaneador;
         this.escolhas = new ArrayList<Escolha>();
+        this.rival = ri;
     }
      public void setAlteracaoDeHp(int alteracaoDeHp) {
         this.alteracaoDeHp = alteracaoDeHp;
@@ -29,7 +31,7 @@ public class Capitulo {
     }
 
     private void mostrar(){
-        System.out.println(narrativa);
+        System.out.println(narrativa.replace("\\n","\n").replace("player.getNome()", personagemPrincipal.getNome()).replace("rival.getNome()", rival.getNome()));
         System.out.println("");
         for(Escolha i : escolhas){
             System.out.println(i.texto);
