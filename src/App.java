@@ -39,6 +39,24 @@ public class App {
                 String escolha = savScanner.nextLine();
                 String destino = savScanner.nextLine();
                 listaCapitulo.get(origem).adicionarescolha(new Escolha(escolha, listaCapitulo.get(destino)));
+            } else if (linha.equalsIgnoreCase("CapituloImagem")){
+                String nome = savScanner.nextLine();
+                int setAlteracaoDeEnergia = Integer.parseInt(savScanner.nextLine());
+                int setAlteracaoDeHp = Integer.parseInt(savScanner.nextLine());
+                String rivalString = savScanner.nextLine();
+                String narrativaString = savScanner.nextLine();
+                String lerlinha = "";
+                String imagem = "";
+                while(!lerlinha.equalsIgnoreCase("Fim")){
+                    imagem += lerlinha + "\n";
+                    lerlinha = savScanner.nextLine();
+                }
+                Capituloimagem tempCapitulo = new Capituloimagem (player, escaneador,rival);
+                tempCapitulo.setNarrativa(narrativaString);
+                tempCapitulo.setAlteracaoDeEnergia(setAlteracaoDeEnergia);
+                tempCapitulo.setAlteracaoDeHp(setAlteracaoDeHp);
+                tempCapitulo.setImagem(imagem);
+                listaCapitulo.put(nome,tempCapitulo);
             }
         }
         listaCapitulo.get("1").executar();

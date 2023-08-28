@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Capitulo {
-    private String narrativa;
-    private ArrayList<Escolha> escolhas;
-    private int alteracaoDeEnergia = 0;
-    private int alteracaoDeHp = 0;
-    private personagem personagemPrincipal;
-    private personagem rival;
-    private Scanner escaneador;
+    protected String narrativa;
+    protected ArrayList<Escolha> escolhas;
+    protected int alteracaoDeEnergia = 0;
+    protected int alteracaoDeHp = 0;
+    protected personagem personagemPrincipal;
+    protected personagem rival;
+    protected Scanner escaneador;
 
     public Capitulo(personagem personagemPrincipal, Scanner escaneador, personagem ri) {
         this.personagemPrincipal = personagemPrincipal;
@@ -30,7 +30,7 @@ public class Capitulo {
         this.narrativa = narrativa;
     }
 
-    private void mostrar(){
+    protected void mostrar(){
         System.out.println(narrativa.replace("\\n","\n").replace("player.getNome()", personagemPrincipal.getNome()).replace("rival.getNome()", rival.getNome()));
         System.out.println("");
         for(Escolha i : escolhas){
@@ -44,7 +44,7 @@ public class Capitulo {
             personagemPrincipal.recceberdano(alteracaoDeHp);
         }
     }
-    private int getindex(String valorString){
+    protected int getindex(String valorString){
         int retorno = -1;
         for(Escolha i : escolhas){
             retorno += 1;
@@ -54,7 +54,7 @@ public class Capitulo {
         }
         return -1;
     }
-    private int escolha(){
+    protected int escolha(){
         String armazenar = escaneador.nextLine();
         while(true){
             if(getindex(armazenar)>=0){
